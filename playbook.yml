@@ -1,0 +1,8 @@
+#provisionung des serveurs
+
+- hosts : devops
+  remote_user: root
+
+  roles :
+    - common
+    - web

@@ -2,7 +2,6 @@
 
 - hosts : devops
   remote_user: root
-
   roles :
     - common
-    - web
+    - docker

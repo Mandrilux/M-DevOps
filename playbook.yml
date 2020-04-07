@@ -14,6 +14,7 @@
       name: swarm-manager
     when : ansible_distribution == 'Debian'
 
+
 - hosts : swarm-worker-1
   remote_user: root
   tasks:
@@ -33,30 +34,14 @@
 
 
 
-
-
-
 - name: setup pre-requisites
   hosts: all
   roles:
     - create-sudo-user
 
-- name: setup docker user on the nodes
-  become: yes
-  become_user: docker
-  hosts: admin
-  roles:
-    - configure-admin
-
-- name: copy public key to nodes
-  become: yes
-  become_user: docker
-  hosts: docker-nodes
-  roles:
-    - copy-keys
 
 - name: initialize docker swarm
-  hosts: swarm-manager
+  hosts: swarm-managers
   roles:
     - docker-swarm-init
 

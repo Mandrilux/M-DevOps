@@ -1,17 +1,20 @@
 Host swarm-manager
   Hostname swarm-manager
-  User docker
+  User root
+  IdentityFile /tmp/key.pem
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
- 
+
+Host swarm-worker-1
+  Hostname swarm-worker-1
+  User root
+  IdentityFile /tmp/key.pem
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+
 Host swarm-worker-2
   Hostname swarm-worker-2
-  User docker
-  StrictHostKeyChecking no
-  UserKnownHostsFile /dev/null
- 
-Host swarm-worker-3
-  Hostname swarm-worker-3
-  User docker
+  User root
+  IdentityFile /tmp/key.pem
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null

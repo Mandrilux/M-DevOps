@@ -1,17 +1,26 @@
 [devops-all:children]
-swarm-manager
-swarm-worker-1
-swarm-worker-2
+swarm-managers
+swarm-workers
 
-[swarm-manager]
+
+[docker-nodes]
 devops1.baptisteheraud.com
-
-[swarm-worker:children]
-swarm-worker-1
-swarm-worker-2
-
-[swarm-worker-1]
 devops2.baptisteheraud.com
-
-[swarm-worker-2]
 devops3.baptisteheraud.com
+
+
+[swarm-managers]
+swarm-manager ansible_host=devops1.baptisteheraud.com
+
+
+[swarm-workers]
+swarm-worker-1 ansible_host=devops2.baptisteheraud.com
+swarm-worker-2 ansible_host=devops3.baptisteheraud.com
+
+[docker:children]
+docker-nodes
+swarm-managers
+swarm-workers
+
+[docker:vars]
+ansible_python_interpreter=/usr/bin/python3

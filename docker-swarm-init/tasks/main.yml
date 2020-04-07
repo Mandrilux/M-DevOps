@@ -22,3 +22,6 @@
   shell: docker swarm join-token --quiet worker
   register: worker_token
   tags: swarm
+
+- debug:
+    msg: Token {{ worker_token }} 

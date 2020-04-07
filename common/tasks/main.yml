@@ -18,3 +18,9 @@
     -  git
     -  tree
     -  htop
+    -  ntp
+    -  python
+    -  tcpdump
+    -  wget
+    -  openssl
+    -  curl

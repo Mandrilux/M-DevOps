@@ -6,13 +6,13 @@
     - common
     - docker
 
-
 - hosts : swarm-manager
   remote_user: root
   tasks:
   - name: hostname
     hostname:
       name: swarm-manager
+    when : ansible_distribution == 'Debian'
 
 - hosts : swarm-worker-1
   remote_user: root

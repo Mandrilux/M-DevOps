@@ -1,6 +1,6 @@
 #provisionung des serveurs
 
-- hosts : devops
+- hosts : devops-all
   remote_user: root
   roles :
     - common

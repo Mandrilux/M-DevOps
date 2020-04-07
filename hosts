@@ -1,2 +1,11 @@
-[devops]
+[devops-all:children]
+swarm-manager
+swarm-worker
+
+
+[swarm-manager]
 devops1.baptisteheraud.com
+
+[swarm-worker]
+devops3.baptisteheraud.com
+devops2.baptisteheraud.com

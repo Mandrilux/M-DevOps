@@ -7,6 +7,8 @@
       state: latest
       update_cache: yes
       force_apt_get: yes
+    when : ansible_distribution == 'Debian'
+
   - name: Install packages for apt add repository over HTTPS
     become: yes
     apt:
@@ -23,14 +25,20 @@
       - software-properties-common
       - gnupg2
       - curl
+    when : ansible_distribution == 'Debian'
+
   - name: Add Apt signing key from official docker repo
     apt_key:
       url: https://download.docker.com/linux/debian/gpg
       state: present
+    when : ansible_distribution == 'Debian'
+
   - name: add docker official repository for Debian Stretch
     apt_repository:
       repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
       state: present
+    when : ansible_distribution == 'Debian'
+
   - name: Index new repo into the cache
     become: yes
     apt:
@@ -38,13 +46,17 @@
       state: latest
       update_cache: yes
       force_apt_get: yes
+    when : ansible_distribution == 'Debian'
+
   - name: actually install docker
     apt:
       name: "docker-ce"
       state: latest
+    when : ansible_distribution == 'Debian'
 
   - name: Ensure docker-compose is installed and available
     get_url:
       url: https://github.com/docker/compose/releases/download/1.22.0/docker-compose-{{ ansible_system }}-{{ ansible_userspace_architecture }}
       dest: /usr/local/bin/docker-compose
       mode: 'u+x,g+x'
+    when : ansible_distribution == 'Debian'

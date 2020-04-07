@@ -5,3 +5,28 @@
   roles :
     - common
     - docker
+
+
+- hosts : swarm-manager
+  remote_user: root
+  tasks:
+  - name: hostname
+    hostname:
+      name: swarm-manager
+
+- hosts : swarm-worker-1
+  remote_user: root
+  tasks:
+  - name: hostname
+    hostname:
+      name: swarm-worker-1
+    when : ansible_distribution == 'Debian'
+
+
+- hosts : swarm-worker-2
+  remote_user: root
+  tasks:
+  - name: hostname
+    hostname:
+      name: swarm-worker-2
+    when : ansible_distribution == 'Debian'
